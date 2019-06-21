@@ -1,3 +1,13 @@
 * {
     box-sizing: border-box;
+    margin: 0px;
   }
+img {
+  height: 250px;
+}
+h2 {
+  text-align: center;
+}
+p {
+  text-align: left;
+}

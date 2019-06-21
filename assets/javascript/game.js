@@ -9,12 +9,12 @@ $(document).ready(function () {
     var crystalNumbers;
     var wins = 0;
     var losses = 0;
-    var totalScore = 0;
 
     var crystal1;
     var crystal2;
     var crystal3;
     var crystal4;
+    var totalScore = 0;
 
     // random number selector function for randomnumber
     function chooseRandomNumber() {
@@ -42,8 +42,26 @@ $(document).ready(function () {
         crystal4 = randomCrystalValue[Math.floor(Math.random() * randomCrystalValue.length)];
         $("#button-1").val(crystal4)
     }
-    
-    // game start function(game restart function)
+
+    // Crystal Click Manipulation EDIT:Can't get this to add, just keeps appending
+    $("#button-1").click(function() {
+        totalScore += crystal1;
+        $("#totalNumber").html(totalScore);
+    });
+    $("#button-2").click(function() {
+        totalScore += crystal2;
+        $("#totalNumber").html(totalScore);
+    });
+    $("#button-3").click(function() {
+        totalScore += crystal3;
+        $("#totalNumber").html(totalScore);
+    });
+    $("#button-4").click(function() {
+        totalScore += crystal4;
+        $("#totalNumber").html(totalScore);
+    });
+
+    // game restart function
     function gameRestart() {
         totalScore = 0;
         $("#totalNumber").html(totalScore)
@@ -54,13 +72,18 @@ $(document).ready(function () {
         buttonFourValue();
 
     }
-
-    // Crystal Click Manipulation
-    $("#button-1").click(function() {
-        totalScore += buttonOneValue;
-        $("#totalNumber").html(totalScore);
-    });
     // win/loss if else function
+    $("button").click(function() {
+        if (totalScore == randomNumber) {
+            wins ++;
+            gameRestart();
+        }
+        else if (totalScore > randomNumber) {
+            losses ++;
+            gameRestart();
+        }
+    });
+
 
 
 
@@ -71,6 +94,7 @@ $(document).ready(function () {
     buttonTwoValue();
     buttonThreeValue();
     buttonFourValue();
+    gameRestart();
     console.log(crystal1)
     console.log(crystal2)
     console.log(crystal3)
